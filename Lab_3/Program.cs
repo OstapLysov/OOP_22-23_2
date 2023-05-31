@@ -7,24 +7,23 @@ namespace Lab_3
     {
         static void Main(string[] args)
         {
-            Fraction f1, f2;
-            Complex c1, c2;
+            MyFraction f1, f2;
+            MyComplex c1, c2;
             do
             {
-
                 System.Console.WriteLine($"\nEnter the first fraction:");
                 f1 = InputFraction();
                 System.Console.WriteLine($"\nEnter the second fraction:");
                 f2 = InputFraction();
 
-                System.Console.WriteLine($"\n{f1} + {f2} = {Calculator.Add<Fraction>(f1, f2)}");
-                System.Console.WriteLine($"{f1} - {f2} = {Calculator.Subtract<Fraction>(f1, f2)}");
-                System.Console.WriteLine($"{f1} * {f2} = {Calculator.Multiply<Fraction>(f1, f2)}");
+                System.Console.WriteLine($"\n{f1} + {f2} = {Calculator.Add<MyFraction>(f1, f2)}");
+                System.Console.WriteLine($"{f1} - {f2} = {Calculator.Subtract<MyFraction>(f1, f2)}");
+                System.Console.WriteLine($"{f1} * {f2} = {Calculator.Multiply<MyFraction>(f1, f2)}");
                 try
                 {
-                    System.Console.WriteLine($"{f1} : {f2} = {Calculator.Divide<Fraction>(f1, f2)}");
+                    System.Console.WriteLine($"{f1} : {f2} = {Calculator.Divide<MyFraction>(f1, f2)}");
                 }
-                catch ( Exception e )
+                catch (Exception e)
                 {
                     System.Console.WriteLine($"{f1} : {f2}: {e.Message}");
 
@@ -35,24 +34,23 @@ namespace Lab_3
                 System.Console.WriteLine($"\nEnter the second complex number:");
                 c2 = InputComplex();
 
-                System.Console.WriteLine($"\n{c1} + {c2} = {Calculator.Add<Complex>(c1, c2)}");
-                System.Console.WriteLine($"{c1} - {c2} = {Calculator.Subtract<Complex>(c1, c2)}");
-                System.Console.WriteLine($"{c1} * {c2} = {Calculator.Multiply<Complex>(c1, c2)}");
+                System.Console.WriteLine($"\n{c1} + {c2} = {Calculator.Add<MyComplex>(c1, c2)}");
+                System.Console.WriteLine($"{c1} - {c2} = {Calculator.Subtract<MyComplex>(c1, c2)}");
+                System.Console.WriteLine($"{c1} * {c2} = {Calculator.Multiply<MyComplex>(c1, c2)}");
                 try
                 {
-                    System.Console.WriteLine($"{c1} : {c2} = {Calculator.Divide<Complex>(c1, c2)}");
+                    System.Console.WriteLine($"{c1} : {c2} = {Calculator.Divide<MyComplex>(c1, c2)}");
                 }
                 catch (Exception e)
                 {
                     System.Console.WriteLine($"{c1} : {c2}: {e.Message}");
-
                 }
             } while (true);
         }
 
-        static Fraction InputFraction()
+        static MyFraction InputFraction()
         {
-            Fraction fraction;
+            MyFraction fraction;
             do
             {
                 string[] input = Console.ReadLine().Split("/").Select(s => s.Trim()).ToArray(); ;
@@ -68,7 +66,7 @@ namespace Lab_3
                 }
                 catch (Exception e)
                 {
-                    System.Console.WriteLine($"\nAn error occurred when trying to parse the input: {e.Message}");
+                    System.Console.WriteLine($"\nAn error occurred when trying to process the input: {e.Message}");
                     System.Console.WriteLine("\nTry again:");
                     continue;
                 }
@@ -76,9 +74,9 @@ namespace Lab_3
             } while (true);
             return fraction;
         }
-        static Complex InputComplex()
+        static MyComplex InputComplex()
         {
-            Complex complex;
+            MyComplex complex;
             do
             {
                 string[] input = Console.ReadLine().Split("+").Select(s => s.Trim()).ToArray();
@@ -94,7 +92,7 @@ namespace Lab_3
                 }
                 catch (Exception e)
                 {
-                    System.Console.WriteLine($"\nAn error occurred when trying to parse the input: {e.Message}");
+                    System.Console.WriteLine($"\nAn error occurred when trying to process the input: {e.Message}");
                     System.Console.WriteLine("\nTry again:");
                     continue;
                 }

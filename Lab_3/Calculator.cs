@@ -114,7 +114,7 @@ namespace Lab_3
         }
     }
 
-    internal class Fraction : IRationalFraction
+    internal class MyFraction : IRationalFraction
     {
         private int _numerator = 0;
         private int _denominator = 1;
@@ -127,12 +127,12 @@ namespace Lab_3
             Simplify();
         }
 
-        public Fraction()
+        public MyFraction()
         {
             _numerator = 0;
             _denominator = 1;
         }
-        public Fraction(int numerator, int denominator)
+        public MyFraction(int numerator, int denominator)
         {
             _numerator = numerator;
             _denominator = denominator;
@@ -141,6 +141,8 @@ namespace Lab_3
 
         private void Simplify()
         {
+            if (_denominator == 0) throw new DivideByZeroException();
+
             int gcd = GetGCD(Numerator, Denominator);
             if (gcd == 0) gcd = 1;
             _numerator /= gcd;
@@ -172,14 +174,14 @@ namespace Lab_3
         }
     }
 
-    internal class Complex : IComplex
+    internal class MyComplex : IComplex
     {
-        public Complex()
+        public MyComplex()
         {
             Real = 0;
             Imaginary = 0;
         }
-        public Complex(double real, double imaginary)
+        public MyComplex(double real, double imaginary)
         {
             Real = real;
             Imaginary = imaginary;
